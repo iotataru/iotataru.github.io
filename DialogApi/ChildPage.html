@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dialog App - Child Page</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=9" /> 
+	        <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.debug.js"></script> 
+		<script type="text/javascript">
+			"use strict";
+			// The initialize function must be run each time a new page is loaded
+			window.Office.initialize = function (reason) {
+			    $(document).ready(function () {
+			        app.initialize();
+			        RegisterMessageChild();
+			    });
+			};
+
+			//*********************message parent
+			function messageParent() {
+				var value = document.getElementById("MessageForParent").value;
+			    if (!value) {
+			        value = "Message For Parent";
+			    }
+
+			    Office.context.ui.messageParent(value);
+			}
+
+			function showNotification(text) {
+			    document.getElementById('actionResult').innerText += text;
+			}
+
+			function addMessageStatus(arg) {
+			    showNotification(arg.message);
+			}
+
+			function RegisterMessageChild() {
+				Office.context.ui.addHandlerAsync(Office.EventType.DialogParentMessageReceived, addMessageStatus, onRegisterMessageComplete);
+			}
+
+			function onRegisterMessageComplete(asyncResult) {
+				document.getElementById('actionResult').innerText += asyncResult.status;
+				if(asyncResult.status != Office.AsyncResultStatus.Succeeded) {
+					document.getElementById('actionResult').innerText += asyncResult.error.message;
+				}
+			}
+
+			function redirect() {
+			    var value = document.getElementById("RedirectWebsite").value;
+			    if (!value) {
+			        console.log("Error: need a website in the textbox.");
+			        return;
+			    }
+			    window.location.href = value;
+			}
+
+		</script>
+		<script>
+		// Perform Step 2 of an initialization that -- in a real developer scenario (non-test-agave), would have
+		//    been included inside the "excel-web-16.00.js"/"excel-win32-16.01.js"/etc files
+			Office.onReady(function(info) {
+				// do something
+			});
+		</script>
+	</head>
+	<body>
+		<div id="content-header">
+	        <div class="padding">
+	            <h1>Dialog App - Child Page</h1>
+	        </div>
+	    </div>
+	    <div id="content-main" style="background-color:#F08080;">
+	        <div class="padding">
+	            <button id="messageParent" onclick="messageParent()">Message Parent</button>: <input id="MessageForParent" type="text" placeholder="Message For parent" style="width:200px;"/>
+	            <p></p>
+	            <button id="redirect" onclick="redirect()">Redirect</button>: <input id="RedirectWebsite" type="text" placeholder="https://someWebsiteToRedirectToo.com" style="width:300px;"/>
+	            <p></p>
+	            <label id="actionResult"></label>
+	            <div> Source: https://iotataru.github.io/DialogApi/ChildPage.html </div>
+	        </div>
+	    </div>
+	</body>
+</html>

@@ -43,11 +43,15 @@
 		}
 
 		function launchInlineDialog() {
-		    Office.context.ui.displayDialogAsync(_dialogPageUrl, { height: 50, width: 30, displayInIframe: true }, launchDialogCallback);
+		    Office.context.ui.displayDialogAsync(_dialogPageUrl,
+			{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false, displayInIframe:true},
+			launchDialogCallback);
 		}
 
 		function launchWindowDialog() {
-		    Office.context.ui.displayDialogAsync(_dialogPageUrl, { height: 50, width: 30, displayInIframe: false }, launchDialogCallback);
+		    Office.context.ui.displayDialogAsync(_dialogPageUrl,
+			{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false},
+			launchDialogCallback);
 		}
 
 		function launchInlineDialogFromRibbon(args) {

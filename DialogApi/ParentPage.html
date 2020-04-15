@@ -24,7 +24,7 @@
 		        _dialog = arg.value;
 		        _dialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, addMessageStatus);
 		        _dialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogEventReceived, addCloseStatus);
-		        messageChild("Initial message for child upon parent's launchDialogCallback");
+			setTimeout(messageChildInitial, 2000);
 		    }
 		}
 
@@ -58,6 +58,10 @@
 		    Office.context.ui.displayDialogAsync(_childPageUrl, { height: 50, width: 30, displayInIframe: false }, launchDialogCallback);
 
 		    args.completed();
+		}
+		
+		function messageChildInitial() {
+		    messageChild("Initial message for child upon parent's launchDialogCallback");
 		}
 
 		function messageChild(message = "") {

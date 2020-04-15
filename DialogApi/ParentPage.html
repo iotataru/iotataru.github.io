@@ -37,13 +37,15 @@
 		}
 
 		function launchInlineDialog() {
-		    Office.context.ui.displayDialogAsync(_childPageUrl,
+		    var dialogUrl = !!(document.getElementById("InlineLaunch").value) ? document.getElementById("InlineLaunch").value : _childPageUrl;
+		    Office.context.ui.displayDialogAsync(dialogUrl,
 			{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false, displayInIframe:true},
 			launchDialogCallback);
 		}
 
 		function launchWindowDialog() {
-		    Office.context.ui.displayDialogAsync(_childPageUrl,
+			var dialogUrl = !!(document.getElementById("WindowLaunch").value) ? document.getElementById("InlineLaunch").value : _childPageUrl;
+		    Office.context.ui.displayDialogAsync(dialogUrl,
 			{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false},
 			launchDialogCallback);
 		}
@@ -104,9 +106,9 @@
 	    </div>
 	    <div id="content-main" style="background-color:#F08080;">
 	        <div class="padding">
-	            <button id="launchInlineDialog" onclick="launchInlineDialog()">Launch Inline Dialog</button>
+	            <button id="launchInlineDialog" onclick="launchInlineDialog()">Launch Inline Dialog</button>: <input id="InlineLaunch" type="text" placeholder="https://iotataru.github.io/DialogApi/ChildPage.html" style="width:300px;"/>
 	            <p></p>
-	            <button id="launchWindowDialog" onclick="launchWindowDialog()">Launch Window Dialog</button>
+	            <button id="launchWindowDialog" onclick="launchWindowDialog()">Launch Window Dialog</button>: <input id="WindowLaunch" type="text" placeholder="https://iotataru.github.io/DialogApi/ChildPage.html" style="width:300px;"/>
 	            <p></p>
 	            <button id="messageChild" onclick="messageChild()">SendMessageToChild</button>: <input id="MessageForChild" type="text" placeholder="Message For Child" style="width:200px;"/>
 	            <p></p>

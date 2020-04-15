@@ -10,14 +10,7 @@
 		"use strict";
 		// The initialize function must be run each time a new page is loaded
 		var _dialog;
-		var _dialogPageUrl;
-
-		window.Office.initialize = function (reason) {
-		    $(document).ready(function () {
-		        app.initialize();
-		        _dialogPageUrl = "https://iotataru.github.io/DialogApi/ChildPage.html";
-		    });
-		};
+		var _childPageUrl = "https://iotataru.github.io/DialogApi/ChildPage.html";
 
 		function showNotification(text) {
 		    document.getElementById('actionResult').innerText += text;
@@ -43,25 +36,25 @@
 		}
 
 		function launchInlineDialog() {
-		    Office.context.ui.displayDialogAsync(_dialogPageUrl,
+		    Office.context.ui.displayDialogAsync(_childPageUrl,
 			{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false, displayInIframe:true},
 			launchDialogCallback);
 		}
 
 		function launchWindowDialog() {
-		    Office.context.ui.displayDialogAsync(_dialogPageUrl,
+		    Office.context.ui.displayDialogAsync(_childPageUrl,
 			{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false},
 			launchDialogCallback);
 		}
 
 		function launchInlineDialogFromRibbon(args) {
-		    Office.context.ui.displayDialogAsync(_dialogPageUrl, { height: 50, width: 30, displayInIframe: true }, launchDialogCallback);
+		    Office.context.ui.displayDialogAsync(_childPageUrl, { height: 50, width: 30, displayInIframe: true }, launchDialogCallback);
 
 		    args.completed();
 		}
 
 		function launchWindowDialogFromRibbon(args) {
-		    Office.context.ui.displayDialogAsync(_dialogPageUrl, { height: 50, width: 30, displayInIframe: false }, launchDialogCallback);
+		    Office.context.ui.displayDialogAsync(_childPageUrl, { height: 50, width: 30, displayInIframe: false }, launchDialogCallback);
 
 		    args.completed();
 		}

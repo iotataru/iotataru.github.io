@@ -3,7 +3,7 @@
 <head>
     <title>Dialog App - Parent Page</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <script type="text/javascript" src="https://localhost:3000/dist/office.debug.js"></script> 
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.debug.js"></script> 
 </head>
 
    	<script type="text/javascript">
@@ -39,14 +39,14 @@
 		function launchInlineDialog() {
 		    var dialogUrl = !!(document.getElementById("InlineLaunch").value) ? document.getElementById("InlineLaunch").value : _childPageUrl;
 		    Office.context.ui.displayDialogAsync(dialogUrl,
-			{height:80, width:50, requireHTTPS: true, promptBeforeOpen:false, displayInIframe:true},
+			{height:80, width:50, requireHTTPS: false, promptBeforeOpen:false, enforceAppDomain: false, displayInIframe:true},
 			launchDialogCallback);
 		}
 
 		function launchWindowDialog() {
 		    var dialogUrl = !!(document.getElementById("WindowLaunch").value) ? document.getElementById("WindowLaunch").value : _childPageUrl;
 		    Office.context.ui.displayDialogAsync(dialogUrl,
-			{height:80, width:50, requireHTTPS: true, promptBeforeOpen:true},
+			{height:80, width:50, requireHTTPS: false, promptBeforeOpen:false, enforceAppDomain: false},
 			launchDialogCallback);
 		}
 

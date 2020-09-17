@@ -46,7 +46,7 @@
 		function launchWindowDialog() {
 		    var dialogUrl = !!(document.getElementById("WindowLaunch").value) ? document.getElementById("WindowLaunch").value : _childPageUrl;
 		    Office.context.ui.displayDialogAsync(dialogUrl,
-			{height:80, width:50, requireHTTPS: false, hideTitle: true, requireHTTPs: false, promptBeforeOpen:false, enforceAppDomain: true},
+			{height:80, width:50, requireHTTPS: false, hideTitle: true, requireHTTPs: false, promptBeforeOpen:false, enforceAppDomain: false},
 			launchDialogCallback);
 		}
 

@@ -65,8 +65,12 @@
 		function messageChildInitial() {
 		    messageChild("Initial message for child upon parent's launchDialogCallback");
 		}
+		
+		function messageChild() {
+		    messageChild("");
+		}
 
-		function messageChild(message = "") {
+		function messageChild(message) {
 		    var value = document.getElementById("MessageForChild").value;
 		    if (!value) {
 			value = message;

@@ -4,7 +4,13 @@ var _dialog;
 var _childPageUrl = "https://iotataru.github.io/DialogApi/ChildPage.html";
 
 function getCurentSource() {
-  document.getElementById('currentSource').innerText = "SOURCE: " + document.querySelector('[title="Office Add-in TwoWayMessageDialogTest"]').src;
+  var source;
+  if (!document.querySelector('[title="Office Add-in TwoWayMessageDialogTest"]')) {
+    source = window.location.hostname;
+  } else {
+    source = document.querySelector('[title="Office Add-in TwoWayMessageDialogTest"]').src;
+  }
+  document.getElementById('currentSource').innerText = "SOURCE: " + source;
 }
 
 function showNotification(text) {

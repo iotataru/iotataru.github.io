@@ -3,8 +3,8 @@
 var _dialog;
 var _childPageUrl = "https://iotataru.github.io/DialogApi/ChildPage.html";
 
-window.onload = function() {
-  document.getElementById('curentSource').innerHTML = "SOURCE: " + document.querySelector('[title="Office Add-in TwoWayMessageDialogTest"]').src;
+function getCurentSource() {
+  document.getElementById('currentSource').innerText = "SOURCE: " + document.querySelector('[title="Office Add-in TwoWayMessageDialogTest"]').src;
 }
 
 function showNotification(text) {

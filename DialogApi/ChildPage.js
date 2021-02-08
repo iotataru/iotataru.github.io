@@ -6,6 +6,11 @@ window.Office.initialize = function (reason) {
     RegisterMessageChild();
 }
 
+function mockSubmitCredentials() {
+  var token = "SecretToken";
+  Office.context.ui.messageParent(token);
+}
+
 //*********************message parent
 function messageParent() {
   var value = document.getElementById("MessageForParent").value;

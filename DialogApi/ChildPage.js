@@ -22,7 +22,8 @@ function messageParent() {
 }
 
 function showNotification(text) {
-    document.getElementById('actionResult').innerText += text;
+    if (text === "action:deleteUser") document.getElementById('actionResult').innerText += "-User Deleted-";
+    else document.getElementById('actionResult').innerText += text;
 }
 
 function addMessageStatus(arg) {
